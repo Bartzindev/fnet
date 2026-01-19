@@ -8,7 +8,7 @@ import SubscriptionModal from "./subscription-modal"
 const residentialPlans = [
   {
     speed: "500",
-    price: "109,90",
+    price: "99,90",
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
   },
   {
