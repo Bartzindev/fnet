@@ -26,10 +26,10 @@ const residentialPlans = [
 ]
 
 const mobilePlans = [
-  { gb: "5", bonusGb: "3", price: "89,90" },
+  { gb: "5", bonusGb: "3", price: "49,90" },
   { gb: "10", bonusGb: "5", price: "59,90" },
   { gb: "15", bonusGb: "5", price: "64,99" },
-  { gb: "25", bonusGb: "10", price: "79,99" },
+  { gb: "25", bonusGb: "10", price: "89,90" },
 ]
 
 interface PlansSectionProps {
