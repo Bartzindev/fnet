@@ -1,0 +1,761 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated design tokens for premium Fernando Net brand */
+  --background: #ffffff;
+  --foreground: #000347;
+  --primary: #000347;
+  --primary-foreground: #ffffff;
+  --accent: #e42525;
+  --accent-foreground: #ffffff;
+  --muted: #f5f6fa;
+  --muted-foreground: #555555;
+  --border: #e5e7eb;
+  --radius: 1rem;
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Nohemi font face definitions */
+@font-face {
+  font-family: "Nohemi";
+  src: url("/images/nohemi-semibold-bf6438cc57db2ff.woff") format("woff");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("/images/nohemi-bold-bf6438cc577b524.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+      "Droid Sans", "Helvetica Neue", sans-serif;
+    /* Hide scrollbar in all browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h5 {
+    font-family: "Nohemi", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  h1 {
+    @apply text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+    font-weight: 400;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Global animation utilities */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out;
+  }
+}
+
+@layer components {
+  /* Added soft pulse animation for header button */
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.02);
+      opacity: 0.95;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  /* Added fade-in animation for login page */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  /* Added slide-up animation for login card */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+
+  /* Added WhatsApp button pulse animation */
+  @keyframes pulse-scale {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5), 0 0 30px rgba(37, 211, 102, 0.3);
+    }
+  }
+
+  .animate-pulse-scale {
+    animation: pulse-scale 2s ease-in-out infinite;
+  }
+
+  /* Premium button styles with hover effects */
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-250 ease-in-out;
+    background-color: rgb(228, 37, 37);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    @apply shadow-lg;
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-250 ease-in-out;
+    background-color: transparent;
+    color: rgb(228, 37, 37);
+    border: 2px solid rgb(228, 37, 37);
+  }
+
+  .btn-secondary:hover {
+    @apply shadow-lg;
+    transform: scale(1.05);
+    background-color: rgba(228, 37, 37, 0.05);
+  }
+
+  .btn-outline-blue {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-250 ease-in-out;
+    background-color: transparent;
+    color: rgb(0, 3, 71);
+    border: 2px solid rgb(0, 3, 71);
+  }
+
+  .btn-outline-blue:hover {
+    transform: scale(1.04);
+    background-color: rgba(0, 3, 71, 0.05);
+  }
+
+  /* Soft shadow for cards */
+  .card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-shadow-hover {
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .card-shadow-hover:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+  }
+
+  /* Added mobile plan card hover effects and animations */
+  .mobile-plan-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Ensuring box-sizing is properly applied globally to card */
+    box-sizing: border-box !important;
+  }
+
+  /* Ensuring all internal elements inherit box-sizing */
+  .mobile-plan-card * {
+    box-sizing: border-box !important;
+  }
+
+  /* Preventing images from exceeding card width */
+  .mobile-plan-card img,
+  .mobile-plan-card svg {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+  .mobile-plan-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.05);
+  }
+
+  /* Added horizontal scroll utilities for mobile plans */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Smooth scroll snap for better UX */
+  .mobile-scroll > * {
+    scroll-snap-align: center;
+  }
+
+  /* Added focus highlight for cards during auto-scroll */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      box-shadow: 0 12px 32px rgba(228, 37, 37, 0.3), 0 0 20px rgba(228, 37, 37, 0.2);
+    }
+  }
+
+  .mobile-plan-card.in-focus {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Added subtle connection-themed background animations for combo section */
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.05);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+  }
+
+  @keyframes float-slow-reverse {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(-25px, 25px) scale(1.03);
+    }
+    66% {
+      transform: translate(20px, -15px) scale(0.97);
+    }
+  }
+
+  @keyframes pulse-line {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scaleY(0.5);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes pulse-line-horizontal {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scaleX(0.5);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes pulse-line-delayed {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scaleY(0.5);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scaleY(1);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+
+  .animate-float-slow-reverse {
+    animation: float-slow-reverse 25s ease-in-out infinite;
+  }
+
+  .animate-pulse-line {
+    animation: pulse-line 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-line-horizontal {
+    animation: pulse-line-horizontal 5s ease-in-out infinite 1s;
+  }
+
+  .animate-pulse-line-delayed {
+    animation: pulse-line-delayed 6s ease-in-out infinite 2s;
+  }
+
+  /* Adding marquee animation styles for scrolling text section */
+  @keyframes marquee {
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Removed shine animation - using pulse-soft instead */
+  [data-marquee] {
+    --loop-duration: 30s;
+    display: block;
+  }
+
+  [data-marquee] [data-marquee-shadow] {
+    position: absolute;
+    visibility: hidden;
+    white-space: nowrap;
+  }
+
+  [data-marquee] [data-marquee-overflow] {
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+
+  [data-marquee] [data-marquee-container] {
+    display: flex;
+    animation: marquee var(--loop-duration) linear infinite;
+  }
+
+  [data-marquee-style] {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    /* Reduced font size for more compact text */
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  @media (min-width: 768px) {
+    [data-marquee-style] {
+      /* Smaller font on desktop as well */
+      font-size: 0.875rem;
+      padding: 0 1.25rem;
+    }
+  }
+
+  [data-marquee-style]::after {
+    content: " ✦ ";
+    color: #000347; /* Keep decorator icon in brand blue */
+    /* Reduced spacing between text and stars */
+    margin-left: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    [data-marquee-style]::after {
+      /* Reduced spacing on desktop */
+      margin-left: 0.75rem;
+    }
+  }
+
+  /* Added streaming section styles */
+  .streaming-section {
+    width: 100%;
+    padding: 60px 0;
+    background: #0e0e0e;
+  }
+
+  @media (min-width: 768px) {
+    .streaming-section {
+      padding: 80px 0;
+    }
+  }
+
+  .streaming-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    .streaming-content {
+      flex-direction: row;
+      align-items: center;
+      gap: 60px;
+    }
+  }
+
+  .streaming-text {
+    flex: 1;
+  }
+
+  .streaming-carousel-container {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 768px) {
+    .streaming-carousel-container {
+      padding: 0;
+    }
+  }
+
+  .streaming-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    padding: 20px 0;
+  }
+
+  .streaming-card {
+    flex-shrink: 0;
+    width: 200px;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #1a1a1a;
+    border: 1px solid #202020;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 768px) {
+    .streaming-card {
+      width: 220px;
+      height: 300px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .streaming-card {
+      width: 240px;
+      height: 320px;
+    }
+  }
+
+  .streaming-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 30px rgba(228, 37, 37, 0.3);
+    border-color: #e42525;
+  }
+
+  .streaming-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+
+  .streaming-card:hover img {
+    filter: brightness(1.15);
+    transform: scale(1.03);
+  }
+
+  /* Added SVA logos carousel section styles */
+  .sva-carousel-section {
+    width: 100%;
+    /* Reduced padding even more on mobile for thinner bar */
+    padding: 8px 0;
+    background: #e42525;
+  }
+
+  @media (min-width: 768px) {
+    .sva-carousel-section {
+      padding: 18px 0;
+    }
+  }
+
+  .sva-carousel-overflow {
+    overflow: hidden;
+    /* Made container full width on mobile with negative margins to extend beyond viewport */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  @media (min-width: 768px) {
+    .sva-carousel-overflow {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  .sva-carousel-container {
+    display: flex;
+    /* Increased gap spacing between logos for better visual separation */
+    gap: 16px;
+    will-change: transform;
+  }
+
+  @media (min-width: 768px) {
+    .sva-carousel-container {
+      gap: 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sva-carousel-container {
+      gap: 40px;
+    }
+  }
+
+  .sva-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Reduced height even more on mobile for thinner bar */
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .sva-logo-box {
+      height: 35px;
+    }
+  }
+
+  .sva-logo-image {
+    /* Reduced logo height more on mobile, increased on desktop */
+    height: 24px !important;
+    width: auto !important;
+    max-width: 140px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .sva-logo-image {
+      height: 30px !important;
+      max-width: 160px;
+    }
+  }
+
+  .sva-logo-image:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  /* Added plan cards carousel styles (replicating streaming carousel) */
+  .plan-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  .plan-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    will-change: transform;
+  }
+
+  .plan-card-wrapper {
+    flex-shrink: 0;
+    width: 280px;
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 640px) {
+    .plan-card-wrapper {
+      width: 320px;
+    }
+  }
+
+  /* Added mobile plan carousel styles (replicating streaming carousel) */
+  .mobile-plan-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  .mobile-plan-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    will-change: transform;
+  }
+}
