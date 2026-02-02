@@ -17,7 +17,7 @@ interface ComboBuilderProps {
 
 const internetOptions: ComboOption[] = [
   { id: "none_internet", name: "Não quero adicionar", price: 0, description: "Pular esta opção", iconType: "globe" },
-  { id: "net500", name: "500 Mbps", price: 109.9, description: "Ideal para casa", iconType: "globe" },
+  { id: "net500", name: "500 Mbps", price: 99.9, description: "Ideal para casa", iconType: "globe" },
   { id: "net800", name: "800 Mbps", price: 129.9, description: "Mais velocidade", iconType: "globe" },
   { id: "net1000", name: "1000 Mbps", price: 159.9, description: "Ultra rápido", iconType: "globe" },
 ]
