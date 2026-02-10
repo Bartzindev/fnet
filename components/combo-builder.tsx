@@ -42,7 +42,7 @@ const mobileOptions: ComboOption[] = [
   {
     id: "mob25",
     name: "Chip 25GB + 10GB bônus",
-    price: 79.99,
+    price: 89.9,
     description: "+10GB portabilidade",
     iconType: "smartphone",
   },
