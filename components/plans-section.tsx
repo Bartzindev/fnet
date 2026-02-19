@@ -16,13 +16,24 @@ const residentialPlans = [
     speed: "800",
     price: "129,90",
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
-    highlighted: true,
-    mostPopular: true,
+    label: "Plano Família",
+    benefitIcons: [
+      { src: "/images/disney-plus.webp", alt: "Disney+" },
+      { src: "/images/hbo-max.png", alt: "HBO Max" },
+    ],
   },
   {
     speed: "1000",
-    price: "159,90",
+    price: "149,90",
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
+    highlighted: true,
+    mostPopular: true,
+    label: "Plano Gamer",
+    benefitIcons: [
+      { src: "/images/exitlag.png", alt: "ExitLag" },
+      { src: "/images/kaspersky-premium.png", alt: "Kaspersky" },
+      { src: "/images/deezer.png", alt: "Deezer" },
+    ],
   },
 ]
 
@@ -90,6 +101,8 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                   features={plan.features}
                   highlighted={plan.highlighted}
                   mostPopular={plan.mostPopular}
+                  label={plan.label}
+                  benefitIcons={plan.benefitIcons}
                   onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price)}
                 />
               ))}
@@ -114,6 +127,8 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                       features={plan.features}
                       highlighted={plan.highlighted}
                       mostPopular={plan.mostPopular}
+                      label={plan.label}
+                      benefitIcons={plan.benefitIcons}
                       onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price)}
                     />
                   </div>

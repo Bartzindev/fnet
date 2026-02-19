@@ -1,5 +1,12 @@
 "use client"
 
+import Image from "next/image"
+
+interface BenefitIcon {
+  src: string
+  alt: string
+}
+
 interface PlanCardProps {
   speed: string
   price: string
@@ -8,6 +15,8 @@ interface PlanCardProps {
   buttonText?: string
   buttonVariant?: "red" | "blue"
   mostPopular?: boolean
+  label?: string
+  benefitIcons?: BenefitIcon[]
   onSubscribe?: (speed: string) => void
 }
 
@@ -19,6 +28,8 @@ export default function PlanCard({
   buttonText = "Assinar Agora",
   buttonVariant = "red",
   mostPopular = false,
+  label,
+  benefitIcons,
   onSubscribe,
 }: PlanCardProps) {
   const bgColor = "bg-gradient-to-br from-[#000347] via-[#001366] to-[#000347]"
@@ -45,6 +56,14 @@ export default function PlanCard({
         </div>
       )}
 
+      {label && (
+        <div className="relative z-10 text-center mb-2">
+          <span className="inline-block bg-white/10 backdrop-blur-sm text-white/90 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-white/20" style={{ fontFamily: "Nohemi" }}>
+            {label}
+          </span>
+        </div>
+      )}
+
       <div className="mb-6 text-center relative z-10">
         <div className="inline-block">
           <h3
@@ -66,6 +85,19 @@ export default function PlanCard({
         </div>
         <p className="text-sm text-white/60 mt-2 font-medium">/mês</p>
       </div>
+
+      {benefitIcons && benefitIcons.length > 0 && (
+        <div className="mb-6 relative z-10">
+          <p className="text-[10px] uppercase tracking-widest font-semibold text-white/50 text-center mb-3">Incluso no plano</p>
+          <div className="flex items-center justify-center gap-3 flex-nowrap">
+            {benefitIcons.map((icon, idx) => (
+              <div key={idx} className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 relative rounded-xl overflow-hidden shadow-lg border border-white/10">
+                <Image src={icon.src} alt={icon.alt} fill className="object-contain" />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mb-8 flex-grow relative z-10">
         <ul className="space-y-3">
