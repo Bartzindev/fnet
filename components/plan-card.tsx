@@ -31,7 +31,7 @@ export default function PlanCard({
   benefitIcons,
   onSubscribe,
 }: PlanCardProps) {
-  const borderColor = highlighted ? "border-2 border-[#E42525]" : "border border-white/10"
+  const borderColor = "border border-white/10"
 
   const handleSubscribe = () => {
     if (onSubscribe) {
