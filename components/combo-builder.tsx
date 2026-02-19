@@ -17,6 +17,8 @@ interface ComboBuilderProps {
 
 const internetOptions: ComboOption[] = [
   { id: "none_internet", name: "Não quero adicionar", price: 0, description: "Pular esta opção", iconType: "globe" },
+  { id: "familia800", name: "Plano Familia 800 Mbps", price: 139.9, description: "Incluso: Disney+, HBO Max", iconType: "globe" },
+  { id: "gamer1000", name: "Plano Gamer 1000 Mbps", price: 149.9, description: "Incluso: ExitLag, Kaspersky, Deezer", iconType: "globe" },
   { id: "net500", name: "500 Mbps", price: 99.9, description: "Ideal para casa", iconType: "globe" },
   { id: "net800", name: "800 Mbps", price: 129.9, description: "Mais velocidade", iconType: "globe" },
   { id: "net1000", name: "1000 Mbps", price: 159.9, description: "Ultra rápido", iconType: "globe" },
@@ -144,6 +146,8 @@ export default function ComboBuilder({ preSelectedPlan }: ComboBuilderProps) {
         "500": "net500",
         "800": "net800",
         "1000": "net1000",
+        "familia800": "familia800",
+        "gamer1000": "gamer1000",
       }
       const mappedId = speedToId[preSelectedPlan]
       if (mappedId) {
