@@ -103,7 +103,7 @@ export default function PlanCard({
         )}
 
         {/* Features */}
-        <ul className="space-y-2">
+        <ul className="space-y-2 flex-1 flex flex-col justify-center">
           {features.map((feature, idx) => (
             <li key={idx} className="flex items-center gap-2">
               <div className="flex-shrink-0 w-4 h-4 rounded-full bg-[#E42525]/20 flex items-center justify-center">
