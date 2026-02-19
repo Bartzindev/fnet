@@ -53,7 +53,7 @@ const tvStreamingOptions: ComboOption[] = [
   {
     id: "streampremium",
     name: "Premium Streaming",
-    price: 29.9,
+    price: 49.9,
     description: "Planos premium de streaming",
     iconType: "film",
   },
