@@ -18,6 +18,11 @@ const residentialPlans = [
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
   },
   {
+    speed: "1000",
+    price: "159,90",
+    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
+  },
+  {
     speed: "800",
     price: "139,90",
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
@@ -39,11 +44,6 @@ const residentialPlans = [
       { src: "/images/kaspersky-premium.png", alt: "Kaspersky" },
       { src: "/images/deezer.png", alt: "Deezer" },
     ],
-  },
-  {
-    speed: "1000",
-    price: "159,90",
-    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
   },
 ]
 
@@ -102,19 +102,20 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           <PlanSelector activeTab={activeTab} onTabChange={setActiveTab} />
 
           {activeTab === "internet" && (
-            <div className="hidden md:grid md:grid-cols-5 gap-5">
+            <div className="hidden md:flex md:items-stretch gap-4 justify-center">
               {residentialPlans.map((plan, idx) => (
-                <PlanCard
-                  key={idx}
-                  speed={plan.speed}
-                  price={plan.price}
-                  features={plan.features}
-                  highlighted={plan.highlighted}
-                  mostPopular={plan.mostPopular}
-                  label={plan.label}
-                  benefitIcons={plan.benefitIcons}
-                  onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price)}
-                />
+                <div key={idx} className="w-[200px] flex">
+                  <PlanCard
+                    speed={plan.speed}
+                    price={plan.price}
+                    features={plan.features}
+                    highlighted={plan.highlighted}
+                    mostPopular={plan.mostPopular}
+                    label={plan.label}
+                    benefitIcons={plan.benefitIcons}
+                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price)}
+                  />
+                </div>
               ))}
             </div>
           )}
@@ -122,7 +123,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           {activeTab === "internet" && (
             <div className="md:hidden">
               <div
-                className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 py-4 -mx-4"
+                className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-4 py-4 -mx-4 items-stretch"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
@@ -130,7 +131,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                 }}
               >
                 {residentialPlans.map((plan, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-[82vw] max-w-[300px] snap-center first:ml-2 last:mr-2">
+                  <div key={idx} className="flex-shrink-0 w-[68vw] max-w-[250px] snap-start first:ml-2 last:mr-2 flex">
                     <PlanCard
                       speed={plan.speed}
                       price={plan.price}
