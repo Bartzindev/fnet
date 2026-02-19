@@ -47,14 +47,6 @@ export default function PlanCard({
 
       {/* Top content - grows to fill */}
       <div className="relative z-10 flex flex-col flex-1">
-        {mostPopular && (
-          <div className="absolute -top-4 -right-4 md:-top-5 md:-right-5 bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white px-3 py-1 rounded-bl-xl shadow-lg">
-            <span className="text-[10px] font-bold tracking-wider uppercase" style={{ fontFamily: "Nohemi" }}>
-              Mais Popular
-            </span>
-          </div>
-        )}
-
         {/* Label */}
         <div className="text-center min-h-[24px] flex items-center justify-center mb-2">
           {label ? (
