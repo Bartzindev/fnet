@@ -8,21 +8,6 @@ import SubscriptionModal from "./subscription-modal"
 
 const residentialPlans = [
   {
-    speed: "500",
-    price: "99,90",
-    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
-  },
-  {
-    speed: "800",
-    price: "129,90",
-    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
-  },
-  {
-    speed: "1000",
-    price: "159,90",
-    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
-  },
-  {
     speed: "800",
     price: "139,90",
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
@@ -31,6 +16,7 @@ const residentialPlans = [
       { src: "/images/disney-plus.webp", alt: "Disney+" },
       { src: "/images/hbo-max.png", alt: "HBO Max" },
     ],
+    comboDescription: "Plano Familia 800 Mega - R$ 139,90/mês | Incluso: Disney+, HBO Max",
   },
   {
     speed: "1000",
@@ -44,6 +30,22 @@ const residentialPlans = [
       { src: "/images/kaspersky-premium.png", alt: "Kaspersky" },
       { src: "/images/deezer.png", alt: "Deezer" },
     ],
+    comboDescription: "Plano Gamer 1000 Mega - R$ 149,90/mês | Incluso: ExitLag, Kaspersky, Deezer",
+  },
+  {
+    speed: "500",
+    price: "99,90",
+    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
+  },
+  {
+    speed: "800",
+    price: "129,90",
+    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
+  },
+  {
+    speed: "1000",
+    price: "159,90",
+    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
   },
 ]
 
@@ -74,8 +76,10 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
     }
   }, [])
 
-  const handlePlanSubscribe = (planInfo: string, planType: "internet" | "mobile", price: string) => {
-    if (planType === "internet") {
+  const handlePlanSubscribe = (planInfo: string, planType: "internet" | "mobile", price: string, comboDescription?: string) => {
+    if (comboDescription) {
+      setSelectedPlanDetails(comboDescription)
+    } else if (planType === "internet") {
       setSelectedPlanDetails(`Internet Fibra ${planInfo} Mega - R$ ${price}/mês`)
     } else {
       const plan = mobilePlans.find((p) => p.gb === planInfo)
@@ -104,7 +108,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           {activeTab === "internet" && (
             <div className="hidden md:flex md:items-stretch gap-4 justify-center">
               {residentialPlans.map((plan, idx) => (
-                <div key={idx} className="w-[200px] flex">
+                <div key={idx} className="w-[210px] flex">
                   <PlanCard
                     speed={plan.speed}
                     price={plan.price}
@@ -113,7 +117,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                     mostPopular={plan.mostPopular}
                     label={plan.label}
                     benefitIcons={plan.benefitIcons}
-                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price)}
+                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
                   />
                 </div>
               ))}
@@ -128,12 +132,12 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
                   WebkitOverflowScrolling: "touch",
-                  paddingLeft: "5vw",
-                  paddingRight: "5vw",
+                  paddingLeft: "4vw",
+                  paddingRight: "4vw",
                 }}
               >
                 {residentialPlans.map((plan, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-[70vw] snap-center flex">
+                  <div key={idx} className="flex-shrink-0 w-[72vw] snap-center flex">
                     <PlanCard
                       speed={plan.speed}
                       price={plan.price}
@@ -142,7 +146,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                       mostPopular={plan.mostPopular}
                       label={plan.label}
                       benefitIcons={plan.benefitIcons}
-                      onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price)}
+                      onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
                     />
                   </div>
                 ))}
