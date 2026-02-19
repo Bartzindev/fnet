@@ -16,7 +16,12 @@ const residentialPlans = [
     speed: "800",
     price: "129,90",
     features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
-    label: "Plano Família",
+  },
+  {
+    speed: "800",
+    price: "139,90",
+    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
+    label: "Plano Familia",
     benefitIcons: [
       { src: "/images/disney-plus.webp", alt: "Disney+" },
       { src: "/images/hbo-max.png", alt: "HBO Max" },
@@ -34,6 +39,11 @@ const residentialPlans = [
       { src: "/images/kaspersky-premium.png", alt: "Kaspersky" },
       { src: "/images/deezer.png", alt: "Deezer" },
     ],
+  },
+  {
+    speed: "1000",
+    price: "159,90",
+    features: ["Wi-Fi Premium incluso", "Instalação gratuita", "Suporte técnico prioritário"],
   },
 ]
 
@@ -92,7 +102,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           <PlanSelector activeTab={activeTab} onTabChange={setActiveTab} />
 
           {activeTab === "internet" && (
-            <div className="hidden md:grid md:grid-cols-3 gap-8">
+            <div className="hidden md:grid md:grid-cols-5 gap-5">
               {residentialPlans.map((plan, idx) => (
                 <PlanCard
                   key={idx}
