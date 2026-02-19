@@ -106,19 +106,20 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           <PlanSelector activeTab={activeTab} onTabChange={setActiveTab} />
 
           {activeTab === "internet" && (
-            <div className="hidden md:grid md:grid-cols-5 gap-3 max-w-[1050px] mx-auto">
+            <div className="hidden md:flex md:items-stretch gap-4 justify-center">
               {residentialPlans.map((plan, idx) => (
-                <PlanCard
-                  key={idx}
-                  speed={plan.speed}
-                  price={plan.price}
-                  features={plan.features}
-                  highlighted={plan.highlighted}
-                  mostPopular={plan.mostPopular}
-                  label={plan.label}
-                  benefitIcons={plan.benefitIcons}
-                  onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
-                />
+                <div key={idx} className="w-[210px] flex">
+                  <PlanCard
+                    speed={plan.speed}
+                    price={plan.price}
+                    features={plan.features}
+                    highlighted={plan.highlighted}
+                    mostPopular={plan.mostPopular}
+                    label={plan.label}
+                    benefitIcons={plan.benefitIcons}
+                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                  />
+                </div>
               ))}
             </div>
           )}
@@ -126,7 +127,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           {activeTab === "internet" && (
             <div className="md:hidden">
               <div
-                className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-2 items-stretch"
+                className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-3 items-stretch"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
@@ -136,7 +137,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                 }}
               >
                 {residentialPlans.map((plan, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-[65vw] snap-center flex">
+                  <div key={idx} className="flex-shrink-0 w-[72vw] snap-center flex">
                     <PlanCard
                       speed={plan.speed}
                       price={plan.price}
