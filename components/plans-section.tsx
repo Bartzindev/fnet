@@ -106,21 +106,38 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           <PlanSelector activeTab={activeTab} onTabChange={setActiveTab} />
 
           {activeTab === "internet" && (
-            <div className="hidden md:flex md:items-stretch gap-4 justify-center">
-              {residentialPlans.map((plan, idx) => (
-                <div key={idx} className="w-[210px] flex">
-                  <PlanCard
-                    speed={plan.speed}
-                    price={plan.price}
-                    features={plan.features}
-                    highlighted={plan.highlighted}
-                    mostPopular={plan.mostPopular}
-                    label={plan.label}
-                    benefitIcons={plan.benefitIcons}
-                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
-                  />
-                </div>
-              ))}
+            <div className="hidden md:flex flex-col items-center gap-6">
+              {/* Featured plans row */}
+              <div className="flex items-stretch gap-5 justify-center">
+                {residentialPlans.filter(p => p.label).map((plan, idx) => (
+                  <div key={idx} className="w-[240px] flex">
+                    <PlanCard
+                      speed={plan.speed}
+                      price={plan.price}
+                      features={plan.features}
+                      highlighted={plan.highlighted}
+                      mostPopular={plan.mostPopular}
+                      label={plan.label}
+                      benefitIcons={plan.benefitIcons}
+                      onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                    />
+                  </div>
+                ))}
+              </div>
+              {/* Basic plans row */}
+              <div className="flex items-stretch gap-4 justify-center">
+                {residentialPlans.filter(p => !p.label).map((plan, idx) => (
+                  <div key={idx} className="w-[180px] flex">
+                    <PlanCard
+                      speed={plan.speed}
+                      price={plan.price}
+                      features={plan.features}
+                      compact
+                      onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
