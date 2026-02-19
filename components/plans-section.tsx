@@ -123,15 +123,17 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
           {activeTab === "internet" && (
             <div className="md:hidden">
               <div
-                className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-4 py-4 -mx-4 items-stretch"
+                className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-3 items-stretch"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
                   WebkitOverflowScrolling: "touch",
+                  paddingLeft: "5vw",
+                  paddingRight: "5vw",
                 }}
               >
                 {residentialPlans.map((plan, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-[68vw] max-w-[250px] snap-start first:ml-2 last:mr-2 flex">
+                  <div key={idx} className="flex-shrink-0 w-[70vw] snap-center flex">
                     <PlanCard
                       speed={plan.speed}
                       price={plan.price}

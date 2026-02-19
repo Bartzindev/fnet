@@ -41,26 +41,25 @@ export default function PlanCard({
 
   return (
     <div
-      className={`bg-gradient-to-br from-[#000347] via-[#001366] to-[#000347] ${borderColor} rounded-2xl p-5 flex flex-col justify-between text-white relative overflow-hidden group h-full`}
+      className={`bg-gradient-to-br from-[#000347] via-[#001366] to-[#000347] ${borderColor} rounded-2xl px-4 py-4 flex flex-col justify-between text-white relative overflow-hidden group h-full`}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      {/* Top section */}
+      {/* Top content */}
       <div className="relative z-10 flex flex-col">
-        {/* Most Popular badge - absolute so it doesn't affect flow */}
         {mostPopular && (
-          <div className="absolute -top-5 -right-5 bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white px-3 py-1 rounded-bl-xl shadow-lg">
+          <div className="absolute -top-4 -right-4 bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white px-3 py-1 rounded-bl-xl shadow-lg">
             <span className="text-[10px] font-bold tracking-wider uppercase" style={{ fontFamily: "Nohemi" }}>
               Mais Popular
             </span>
           </div>
         )}
 
-        {/* Label */}
-        <div className="text-center h-8 flex items-center justify-center">
+        {/* Label - fixed height so cards align */}
+        <div className="text-center h-6 flex items-center justify-center mb-1">
           {label ? (
             <span
-              className="inline-block bg-white/10 backdrop-blur-sm text-white/90 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20"
+              className="inline-block bg-white/10 backdrop-blur-sm text-white/90 text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 rounded-full border border-white/20"
               style={{ fontFamily: "Nohemi" }}
             >
               {label}
@@ -69,39 +68,39 @@ export default function PlanCard({
         </div>
 
         {/* Speed */}
-        <div className="text-center mt-1 mb-1">
+        <div className="text-center">
           <h3
-            className="text-5xl font-extrabold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent leading-none"
+            className="text-[2.75rem] leading-none font-extrabold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent"
             style={{ fontFamily: "Nohemi" }}
           >
             {speed}
           </h3>
-          <p className="text-sm font-medium text-white/70 uppercase tracking-wider mt-1">Mega</p>
+          <p className="text-xs font-medium text-white/70 uppercase tracking-wider mt-0.5">Mega</p>
         </div>
 
         {/* Price */}
-        <div className="text-center mt-3 mb-3">
+        <div className="text-center mt-2">
           <div className="inline-flex items-baseline gap-0.5">
-            <span className="text-base text-white/80 font-semibold">R$</span>
-            <span className="text-4xl font-black text-white" style={{ fontFamily: "Nohemi" }}>
+            <span className="text-sm text-white/80 font-semibold">R$</span>
+            <span className="text-3xl font-black text-white leading-none" style={{ fontFamily: "Nohemi" }}>
               {price}
             </span>
           </div>
-          <p className="text-xs text-white/60 mt-1 font-medium">/mês</p>
+          <p className="text-[11px] text-white/60 font-medium">/mês</p>
         </div>
 
-        {/* Benefit Icons */}
-        <div className="h-16 flex items-center justify-center">
+        {/* Benefit Icons - fixed height for alignment */}
+        <div className="h-14 flex items-center justify-center mt-1">
           {benefitIcons && benefitIcons.length > 0 ? (
             <div>
-              <p className="text-[9px] uppercase tracking-widest font-semibold text-white/50 text-center mb-2">
+              <p className="text-[8px] uppercase tracking-widest font-semibold text-white/50 text-center mb-1">
                 Incluso no plano
               </p>
-              <div className="flex items-center justify-center gap-2 flex-nowrap">
+              <div className="flex items-center justify-center gap-1.5 flex-nowrap">
                 {benefitIcons.map((icon, idx) => (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-9 h-9 relative rounded-lg overflow-hidden shadow-lg border border-white/10"
+                    className="flex-shrink-0 w-8 h-8 relative rounded-lg overflow-hidden shadow-lg border border-white/10"
                   >
                     <Image src={icon.src} alt={icon.alt} fill className="object-contain" />
                   </div>
@@ -112,32 +111,30 @@ export default function PlanCard({
         </div>
 
         {/* Features */}
-        <div className="mt-3">
-          <ul className="space-y-2">
-            {features.map((feature, idx) => (
-              <li key={idx} className="flex items-start gap-2">
-                <div className="flex-shrink-0 w-4 h-4 rounded-full bg-[#E42525]/20 flex items-center justify-center mt-0.5">
-                  <svg
-                    className="w-2.5 h-2.5 text-[#E42525]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    strokeWidth={3}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-white/90 text-xs font-medium flex-1">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="space-y-1.5 mt-1">
+          {features.map((feature, idx) => (
+            <li key={idx} className="flex items-center gap-1.5">
+              <div className="flex-shrink-0 w-3.5 h-3.5 rounded-full bg-[#E42525]/20 flex items-center justify-center">
+                <svg
+                  className="w-2 h-2 text-[#E42525]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth={3}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className="text-white/90 text-[11px] font-medium">{feature}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Button - always at bottom */}
+      {/* Button pinned to bottom */}
       <button
         onClick={handleSubscribe}
-        className="relative z-10 w-full py-3 px-4 text-sm font-bold rounded-xl bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg uppercase tracking-wide mt-4"
+        className="relative z-10 w-full py-2.5 px-3 text-xs font-bold rounded-xl bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg uppercase tracking-wide mt-3 whitespace-nowrap"
         style={{ fontFamily: "Nohemi" }}
       >
         {buttonText}
