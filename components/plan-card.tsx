@@ -89,9 +89,9 @@ export default function PlanCard({
           <p className="text-[11px] text-white/60 font-medium">/mês</p>
         </div>
 
-        {/* Benefit Icons */}
-        <div className="min-h-[52px] flex items-center justify-center mb-3">
-          {benefitIcons && benefitIcons.length > 0 ? (
+        {/* Benefit Icons - only rendered when icons exist */}
+        {benefitIcons && benefitIcons.length > 0 && (
+          <div className="flex items-center justify-center mb-3">
             <div className="text-center">
               <p className="text-[8px] uppercase tracking-widest font-semibold text-white/50 mb-1.5">
                 Incluso no plano
@@ -107,8 +107,8 @@ export default function PlanCard({
                 ))}
               </div>
             </div>
-          ) : null}
-        </div>
+          </div>
+        )}
 
         {/* Features */}
         <ul className="space-y-2">
