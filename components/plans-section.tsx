@@ -16,7 +16,7 @@ const featuredPlans = [
     extraFeatures: ["CDN TV", "Deezer"],
     benefitIcons: [
       { src: "/images/cdntv.png", alt: "CDN TV", bg: "bg-[#0a1628]" },
-      { src: "/images/deezer.png", alt: "Deezer", bg: "bg-[#1c1033]" },
+      { src: "/images/deezer.png", alt: "Deezer", bg: "bg-black" },
     ],
     comboDescription: "Plano Familia 800 Mega - R$ 129,90/mes | Incluso: CDN TV, Deezer",
   },
@@ -49,7 +49,7 @@ const otherPlans: Record<string, Array<{
       extraFeatures: ["CDN TV", "Deezer"],
       benefitIcons: [
         { src: "/images/cdntv.png", alt: "CDN TV", bg: "bg-[#0a1628]" },
-        { src: "/images/deezer.png", alt: "Deezer", bg: "bg-[#1c1033]" },
+        { src: "/images/deezer.png", alt: "Deezer", bg: "bg-black" },
       ],
       comboDescription: "500 Mega - R$ 99,90/mes | Incluso: CDN TV, Deezer",
     },
