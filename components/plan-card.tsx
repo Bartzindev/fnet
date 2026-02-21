@@ -91,18 +91,23 @@ export default function PlanCard({
 
         {/* Benefit Icons */}
         {benefitIcons && benefitIcons.length > 0 && (
-          <div className="flex items-center justify-center mb-3">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 flex-nowrap">
-                {benefitIcons.map((icon, idx) => (
+          <div className="mb-3">
+            <p className="text-[8px] uppercase tracking-widest font-semibold text-white/50 text-center mb-2">
+              Inclusos
+            </p>
+            <div className="flex items-center justify-center gap-3 flex-nowrap">
+              {benefitIcons.map((icon, idx) => (
+                <div key={idx} className="flex flex-col items-center gap-1">
                   <div
-                    key={idx}
-                    className="flex-shrink-0 w-9 h-9 md:w-10 md:h-10 relative rounded-lg overflow-hidden shadow-lg border border-white/10 bg-white/10"
+                    className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 relative rounded-xl overflow-hidden shadow-lg shadow-black/20 border border-white/15 bg-white"
                   >
-                    <Image src={icon.src} alt={icon.alt} fill className="object-contain p-0.5" />
+                    <Image src={icon.src} alt={icon.alt} fill className="object-contain p-1.5" />
                   </div>
-                ))}
-              </div>
+                  <span className="text-[9px] text-white/70 font-medium leading-tight text-center max-w-[56px] truncate">
+                    {icon.alt}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         )}
