@@ -11,11 +11,12 @@ interface PlanCardProps {
   speed: string
   price: string
   features: string[]
+  extraFeatures?: string[]
   highlighted?: boolean
   buttonText?: string
-  buttonVariant?: "red" | "blue"
   mostPopular?: boolean
   label?: string
+  featured?: boolean
   benefitIcons?: BenefitIcon[]
   onSubscribe?: (speed: string) => void
 }
@@ -24,15 +25,15 @@ export default function PlanCard({
   speed,
   price,
   features,
+  extraFeatures,
   highlighted = false,
   buttonText = "Assinar Agora",
   mostPopular = false,
   label,
+  featured = false,
   benefitIcons,
   onSubscribe,
 }: PlanCardProps) {
-  const borderColor = "border border-white/10"
-
   const handleSubscribe = () => {
     if (onSubscribe) {
       onSubscribe(speed)
@@ -41,23 +42,27 @@ export default function PlanCard({
 
   return (
     <div
-      className={`bg-gradient-to-br from-[#000347] via-[#001366] to-[#000347] ${borderColor} rounded-2xl p-4 md:p-5 flex flex-col text-white relative overflow-hidden group h-full`}
+      className={`bg-gradient-to-br from-[#000347] via-[#001366] to-[#000347] border border-white/10 rounded-2xl flex flex-col text-white relative overflow-hidden group h-full transition-all duration-300 ${
+        featured
+          ? "p-5 md:p-6 shadow-2xl shadow-blue-900/40 scale-[1.02]"
+          : "p-4 md:p-5 shadow-xl"
+      }`}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      {/* Top content - grows to fill */}
+      {/* Top content */}
       <div className="relative z-10 flex flex-col flex-1">
-        {/* Label */}
-        <div className="text-center min-h-[24px] flex items-center justify-center mb-2">
-          {label ? (
+        {/* Label badge */}
+        {label && (
+          <div className="text-center mb-3">
             <span
-              className="inline-block bg-[#E42525] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+              className="inline-block bg-[#E42525] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg"
               style={{ fontFamily: "Nohemi" }}
             >
               {label}
             </span>
-          ) : null}
-        </div>
+          </div>
+        )}
 
         {/* Speed */}
         <div className="text-center mb-1">
@@ -74,20 +79,20 @@ export default function PlanCard({
         <div className="text-center mt-2 mb-3">
           <div className="inline-flex items-baseline gap-0.5">
             <span className="text-sm text-white/80 font-semibold">R$</span>
-            <span className="text-[2rem] md:text-4xl font-black text-white leading-none" style={{ fontFamily: "Nohemi" }}>
+            <span
+              className="text-[2rem] md:text-4xl font-black text-white leading-none"
+              style={{ fontFamily: "Nohemi" }}
+            >
               {price}
             </span>
           </div>
-          <p className="text-[11px] text-white/60 font-medium">/mês</p>
+          <p className="text-[11px] text-white/60 font-medium">/mes</p>
         </div>
 
-        {/* Benefit Icons - only rendered when icons exist */}
+        {/* Benefit Icons */}
         {benefitIcons && benefitIcons.length > 0 && (
           <div className="flex items-center justify-center mb-3">
             <div className="text-center">
-              <p className="text-[8px] uppercase tracking-widest font-semibold text-white/50 mb-1.5">
-                Incluso no plano
-              </p>
               <div className="flex items-center justify-center gap-2 flex-nowrap">
                 {benefitIcons.map((icon, idx) => (
                   <div
@@ -102,25 +107,58 @@ export default function PlanCard({
           </div>
         )}
 
-        {/* Features */}
-        <ul className="space-y-2 flex-1 flex flex-col justify-center">
-          {features.map((feature, idx) => (
-            <li key={idx} className="flex items-center gap-2">
-              <div className="flex-shrink-0 w-4 h-4 rounded-full bg-[#E42525]/20 flex items-center justify-center">
-                <svg
-                  className="w-2.5 h-2.5 text-[#E42525]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={3}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span className="text-white/90 text-xs font-medium">{feature}</span>
-            </li>
-          ))}
-        </ul>
+        {/* Standard Features */}
+        <div className="mb-2">
+          <p className="text-[9px] uppercase tracking-widest font-semibold text-white/40 mb-2">
+            Incluso no plano
+          </p>
+          <ul className="space-y-2">
+            {features.map((feature, idx) => (
+              <li key={idx} className="flex items-center gap-2">
+                <div className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-[#E42525] flex items-center justify-center shadow-sm">
+                  <svg
+                    className="w-2.5 h-2.5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    strokeWidth={3}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-white text-xs font-medium">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Extra Features (separated by divider) */}
+        {extraFeatures && extraFeatures.length > 0 && (
+          <div className="mt-1">
+            <div className="border-t border-white/10 mb-2" />
+            <p className="text-[9px] uppercase tracking-widest font-semibold text-[#ff6b6b] mb-2">
+              Beneficios adicionais
+            </p>
+            <ul className="space-y-2">
+              {extraFeatures.map((feature, idx) => (
+                <li key={idx} className="flex items-center gap-2">
+                  <div className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-[#E42525] flex items-center justify-center shadow-sm">
+                    <svg
+                      className="w-2.5 h-2.5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth={3}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-white text-xs font-semibold">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* Button pinned to bottom */}

@@ -6,20 +6,47 @@ import PlanCard from "./plan-card"
 import PlanSelector from "./plan-selector"
 import SubscriptionModal from "./subscription-modal"
 
-const allPlans: Record<string, Array<{
+/* ── BLOCO 1: Planos Principais ─────────────────────────────── */
+const featuredPlans = [
+  {
+    speed: "800",
+    price: "129,90",
+    label: "Plano Familia",
+    features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+    extraFeatures: ["CDN TV", "Deezer"],
+    benefitIcons: [
+      { src: "/images/cdntv.png", alt: "CDN TV" },
+      { src: "/images/deezer.png", alt: "Deezer" },
+    ],
+    comboDescription: "Plano Familia 800 Mega - R$ 129,90/mes | Incluso: CDN TV, Deezer",
+  },
+  {
+    speed: "1000",
+    price: "149,90",
+    label: "Plano Gamer",
+    features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+    extraFeatures: ["Prioridade de rota", "Baixa latencia", "Estabilidade para jogos"],
+    comboDescription: "Plano Gamer 1000 Mega - R$ 149,90/mes | Incluso: Prioridade de rota, Baixa latencia, Estabilidade para jogos",
+  },
+]
+
+/* ── BLOCO 2: Outras Opcoes ──────────────────────────────────── */
+const otherPlans: Record<string, Array<{
   speed: string
   price: string
+  label: string
   features: string[]
-  label?: string
+  extraFeatures: string[]
   benefitIcons?: Array<{ src: string; alt: string }>
-  comboDescription?: string
+  comboDescription: string
 }>> = {
   "500": [
     {
       speed: "500",
       price: "99,90",
       label: "500 Mega",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "CDN TV", "Deezer"],
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["CDN TV", "Deezer"],
       benefitIcons: [
         { src: "/images/cdntv.png", alt: "CDN TV" },
         { src: "/images/deezer.png", alt: "Deezer" },
@@ -30,93 +57,70 @@ const allPlans: Record<string, Array<{
   "800": [
     {
       speed: "800",
-      price: "129,90",
-      label: "CDN TV + Deezer",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "CDN TV", "Deezer"],
-      benefitIcons: [
-        { src: "/images/cdntv.png", alt: "CDN TV" },
-        { src: "/images/deezer.png", alt: "Deezer" },
-      ],
-      comboDescription: "800 Mega + CDN TV + Deezer - R$ 129,90/mes",
-    },
-    {
-      speed: "800",
       price: "149,90",
-      label: "Rastreador",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "Rastreador veicular"],
-      benefitIcons: [
-        { src: "/images/rastreador.png", alt: "Rastreador" },
-      ],
+      label: "800 Mega + Rastreador",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["Rastreador veicular"],
+      benefitIcons: [{ src: "/images/rastreador.png", alt: "Rastreador" }],
       comboDescription: "800 Mega + Rastreador Veicular - R$ 149,90/mes",
     },
     {
       speed: "800",
       price: "149,90",
-      label: "Watch TV",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "Watch TV"],
-      benefitIcons: [
-        { src: "/images/watch-tv.png", alt: "Watch TV" },
-      ],
+      label: "800 Mega + Watch TV",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["Watch TV"],
+      benefitIcons: [{ src: "/images/watch-tv.png", alt: "Watch TV" }],
       comboDescription: "800 Mega + Watch TV - R$ 149,90/mes",
     },
     {
       speed: "800",
       price: "159,90",
-      label: "10GB Movel",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "10GB internet movel"],
+      label: "800 Mega + 10GB Movel",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["10GB internet movel"],
       comboDescription: "800 Mega + 10GB Movel - R$ 159,90/mes",
     },
   ],
   "1000": [
     {
       speed: "1000",
-      price: "149,90",
-      label: "CDN TV + Deezer",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "CDN TV", "Deezer"],
-      benefitIcons: [
-        { src: "/images/cdntv.png", alt: "CDN TV" },
-        { src: "/images/deezer.png", alt: "Deezer" },
-      ],
-      comboDescription: "1000 Mega + CDN TV + Deezer - R$ 149,90/mes",
-    },
-    {
-      speed: "1000",
       price: "159,90",
-      label: "Rastreador",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "Rastreador veicular"],
-      benefitIcons: [
-        { src: "/images/rastreador.png", alt: "Rastreador" },
-      ],
+      label: "1000 Mega + Rastreador",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["Rastreador veicular"],
+      benefitIcons: [{ src: "/images/rastreador.png", alt: "Rastreador" }],
       comboDescription: "1000 Mega + Rastreador Veicular - R$ 159,90/mes",
     },
     {
       speed: "1000",
       price: "159,90",
-      label: "Watch TV",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "Watch TV"],
-      benefitIcons: [
-        { src: "/images/watch-tv.png", alt: "Watch TV" },
-      ],
+      label: "1000 Mega + Watch TV",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["Watch TV"],
+      benefitIcons: [{ src: "/images/watch-tv.png", alt: "Watch TV" }],
       comboDescription: "1000 Mega + Watch TV - R$ 159,90/mes",
     },
     {
       speed: "1000",
       price: "179,90",
-      label: "15GB Movel",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "15GB internet movel"],
+      label: "1000 Mega + 15GB Movel",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["15GB internet movel"],
       comboDescription: "1000 Mega + 15GB Movel - R$ 179,90/mes",
     },
     {
       speed: "1000",
       price: "189,90",
-      label: "25GB Movel",
-      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario", "25GB internet movel"],
+      label: "1000 Mega + 25GB Movel",
+      features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
+      extraFeatures: ["25GB internet movel"],
       comboDescription: "1000 Mega + 25GB Movel - R$ 189,90/mes",
     },
   ],
 }
 
-const speedTabs = ["500", "800", "1000"] as const
+const speedGroups = ["500", "800", "1000"] as const
 
 const mobilePlans = [
   { gb: "5", bonusGb: "3", price: "49,90" },
@@ -131,15 +135,14 @@ interface PlansSectionProps {
 
 export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
   const [activeTab, setActiveTab] = useState<"internet" | "mobile">("internet")
-  const [activeSpeed, setActiveSpeed] = useState<string>("500")
   const [showModal, setShowModal] = useState(false)
   const [selectedPlanDetails, setSelectedPlanDetails] = useState("")
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null)
 
   useEffect(() => {
     const handleSwitchTab = (event: CustomEvent<{ tab: "internet" | "mobile" }>) => {
       setActiveTab(event.detail.tab)
     }
-
     window.addEventListener("switchPlanTab", handleSwitchTab as EventListener)
     return () => {
       window.removeEventListener("switchPlanTab", handleSwitchTab as EventListener)
@@ -150,13 +153,15 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
     if (comboDescription) {
       setSelectedPlanDetails(comboDescription)
     } else if (planType === "internet") {
-      setSelectedPlanDetails(`Internet Fibra ${planInfo} Mega - R$ ${price}/mês`)
+      setSelectedPlanDetails(`Internet Fibra ${planInfo} Mega - R$ ${price}/mes`)
     } else {
       const plan = mobilePlans.find((p) => p.gb === planInfo)
-      setSelectedPlanDetails(`Chip Móvel ${planInfo}GB (+${plan?.bonusGb}GB bônus) - R$ ${price}/mês`)
+      setSelectedPlanDetails(`Chip Movel ${planInfo}GB (+${plan?.bonusGb}GB bonus) - R$ ${price}/mes`)
     }
     setShowModal(true)
   }
+
+  const allOtherPlans = [...(otherPlans["500"] || []), ...(otherPlans["800"] || []), ...(otherPlans["1000"] || [])]
 
   return (
     <>
@@ -175,77 +180,130 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
 
           <PlanSelector activeTab={activeTab} onTabChange={setActiveTab} />
 
-          {/* Speed sub-tabs */}
+          {/* ═══════════════ INTERNET TAB ═══════════════ */}
           {activeTab === "internet" && (
-            <div className="flex justify-center gap-2 mb-6">
-              {speedTabs.map((speed) => (
-                <button
-                  key={speed}
-                  onClick={() => setActiveSpeed(speed)}
-                  className={`px-5 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                    activeSpeed === speed
-                      ? "bg-[#E42525] text-white shadow-lg"
-                      : "bg-[#000347]/10 text-[#000347] hover:bg-[#000347]/20"
-                  }`}
-                  style={{ fontFamily: "Nohemi" }}
-                >
-                  {speed} Mega
-                </button>
-              ))}
-            </div>
-          )}
+            <div>
+              {/* ── BLOCO 1: Planos Principais ── */}
 
-          {/* Desktop grid */}
-          {activeTab === "internet" && (
-            <div className={`hidden md:grid gap-4 justify-center ${
-              allPlans[activeSpeed].length <= 1 ? "md:grid-cols-1 max-w-[240px] mx-auto" :
-              allPlans[activeSpeed].length <= 3 ? "md:grid-cols-3 max-w-[720px] mx-auto" :
-              allPlans[activeSpeed].length <= 4 ? "md:grid-cols-4 max-w-[960px] mx-auto" :
-              "md:grid-cols-5 max-w-[1200px] mx-auto"
-            }`}>
-              {allPlans[activeSpeed].map((plan, idx) => (
-                <PlanCard
-                  key={`${activeSpeed}-${idx}`}
-                  speed={plan.speed}
-                  price={plan.price}
-                  features={plan.features}
-                  label={plan.label}
-                  benefitIcons={plan.benefitIcons}
-                  onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Mobile horizontal scroll */}
-          {activeTab === "internet" && (
-            <div className="md:hidden">
-              <div
-                className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-3 items-stretch"
-                style={{
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-                  WebkitOverflowScrolling: "touch",
-                  paddingLeft: "4vw",
-                  paddingRight: "4vw",
-                }}
-              >
-                {allPlans[activeSpeed].map((plan, idx) => (
-                  <div key={`${activeSpeed}-${idx}`} className="flex-shrink-0 w-[72vw] snap-center flex">
+              {/* Desktop: 2 cards centralizados */}
+              <div className="hidden md:flex justify-center gap-6 mb-12">
+                {featuredPlans.map((plan, idx) => (
+                  <div key={idx} className="w-[280px]">
                     <PlanCard
                       speed={plan.speed}
                       price={plan.price}
                       features={plan.features}
+                      extraFeatures={plan.extraFeatures}
                       label={plan.label}
+                      featured
                       benefitIcons={plan.benefitIcons}
                       onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
                     />
                   </div>
                 ))}
               </div>
+
+              {/* Mobile: stack vertical */}
+              <div className="md:hidden flex flex-col gap-4 mb-8 px-2">
+                {featuredPlans.map((plan, idx) => (
+                  <PlanCard
+                    key={idx}
+                    speed={plan.speed}
+                    price={plan.price}
+                    features={plan.features}
+                    extraFeatures={plan.extraFeatures}
+                    label={plan.label}
+                    featured
+                    benefitIcons={plan.benefitIcons}
+                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                  />
+                ))}
+              </div>
+
+              {/* ── BLOCO 2: Outras Opcoes ── */}
+              <div className="text-center mb-6">
+                <h3 className="text-lg md:text-2xl font-bold text-[#000347]" style={{ fontFamily: "Nohemi" }}>
+                  Outras Opcoes de Planos
+                </h3>
+                <div className="w-16 h-1 bg-[#E42525] mx-auto mt-2 rounded-full" />
+              </div>
+
+              {/* Desktop: grid 4 columns */}
+              <div className="hidden md:grid md:grid-cols-4 gap-4 max-w-[960px] mx-auto">
+                {allOtherPlans.map((plan, idx) => (
+                  <PlanCard
+                    key={idx}
+                    speed={plan.speed}
+                    price={plan.price}
+                    features={plan.features}
+                    extraFeatures={plan.extraFeatures}
+                    label={plan.label}
+                    benefitIcons={plan.benefitIcons}
+                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                  />
+                ))}
+              </div>
+
+              {/* Mobile: accordion by speed */}
+              <div className="md:hidden flex flex-col gap-3 px-2">
+                {speedGroups.map((speed) => {
+                  const plans = otherPlans[speed]
+                  if (!plans || plans.length === 0) return null
+                  const isOpen = openAccordion === speed
+
+                  return (
+                    <div key={speed} className="rounded-xl overflow-hidden border border-[#000347]/10">
+                      <button
+                        onClick={() => setOpenAccordion(isOpen ? null : speed)}
+                        className="w-full flex items-center justify-between px-5 py-4 bg-gradient-to-r from-[#000347] to-[#001366] text-white"
+                      >
+                        <span className="font-bold text-base tracking-wide" style={{ fontFamily: "Nohemi" }}>
+                          {speed} Mega
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-white/60 font-medium">
+                            {plans.length} {plans.length === 1 ? "plano" : "planos"}
+                          </span>
+                          <svg
+                            className={`w-5 h-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </button>
+
+                      <div
+                        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                          isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <div className="p-3 bg-gray-50 flex flex-col gap-3">
+                          {plans.map((plan, idx) => (
+                            <PlanCard
+                              key={idx}
+                              speed={plan.speed}
+                              price={plan.price}
+                              features={plan.features}
+                              extraFeatures={plan.extraFeatures}
+                              label={plan.label}
+                              benefitIcons={plan.benefitIcons}
+                              onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           )}
 
+          {/* ═══════════════ MOBILE TAB ═══════════════ */}
           {activeTab === "mobile" && (
             <div className="hidden md:grid md:grid-cols-4 gap-6">
               {mobilePlans.map((plan, idx) => (
@@ -256,7 +314,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                   {plan.gb === "15" && (
                     <div className="absolute top-3 right-3 z-10">
                       <div className="bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                        Promoção
+                        Promocao
                       </div>
                     </div>
                   )}
@@ -274,7 +332,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
 
                     <div className="mb-4 flex justify-center">
                       <div className="bg-[#E42525]/20 backdrop-blur-sm rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wide text-center border border-[#E42525]/30">
-                        +{plan.bonusGb} GB bônus portabilidade
+                        +{plan.bonusGb} GB bonus portabilidade
                       </div>
                     </div>
 
@@ -307,7 +365,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                           {plan.price}
                         </span>
                       </div>
-                      <p className="text-xs text-white/60 mt-1">por mês</p>
+                      <p className="text-xs text-white/60 mt-1">por mes</p>
                     </div>
                   </div>
 
@@ -339,7 +397,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                       {plan.gb === "15" && (
                         <div className="absolute top-3 right-3 z-10">
                           <div className="bg-gradient-to-r from-[#E42525] to-[#c41f1f] text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                            Promoção
+                            Promocao
                           </div>
                         </div>
                       )}
@@ -357,7 +415,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
 
                         <div className="mb-3 flex justify-center">
                           <div className="bg-[#E42525]/20 backdrop-blur-sm rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-center border border-[#E42525]/30">
-                            +{plan.bonusGb} GB bônus portabilidade
+                            +{plan.bonusGb} GB bonus portabilidade
                           </div>
                         </div>
 
@@ -390,7 +448,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                               {plan.price}
                             </span>
                           </div>
-                          <p className="text-[10px] text-white/60 mt-0.5">por mês</p>
+                          <p className="text-[10px] text-white/60 mt-0.5">por mes</p>
                         </div>
                       </div>
 
