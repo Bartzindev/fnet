@@ -16,12 +16,17 @@ interface ComboBuilderProps {
 }
 
 const internetOptions: ComboOption[] = [
-  { id: "none_internet", name: "Não quero adicionar", price: 0, description: "Pular esta opção", iconType: "globe" },
-  { id: "familia800", name: "Plano Familia 800 Mbps", price: 139.9, description: "Incluso: Disney+, HBO Max", iconType: "globe" },
-  { id: "gamer1000", name: "Plano Gamer 1000 Mbps", price: 149.9, description: "Incluso: ExitLag, Kaspersky, Deezer", iconType: "globe" },
-  { id: "net500", name: "500 Mbps", price: 99.9, description: "Ideal para casa", iconType: "globe" },
-  { id: "net800", name: "800 Mbps", price: 129.9, description: "Mais velocidade", iconType: "globe" },
-  { id: "net1000", name: "1000 Mbps", price: 159.9, description: "Ultra rápido", iconType: "globe" },
+  { id: "none_internet", name: "Nao quero adicionar", price: 0, description: "Pular esta opcao", iconType: "globe" },
+  { id: "net500_cdntv", name: "500 Mega + CDN TV + Deezer", price: 99.9, description: "CDN TV e Deezer inclusos", iconType: "globe" },
+  { id: "net800_cdntv", name: "800 Mega + CDN TV + Deezer", price: 129.9, description: "CDN TV e Deezer inclusos", iconType: "globe" },
+  { id: "net800_rastreador", name: "800 Mega + Rastreador", price: 149.9, description: "Rastreador veicular incluso", iconType: "globe" },
+  { id: "net800_watchtv", name: "800 Mega + Watch TV", price: 149.9, description: "Watch TV incluso", iconType: "globe" },
+  { id: "net800_10gb", name: "800 Mega + 10GB Movel", price: 159.9, description: "10GB internet movel", iconType: "globe" },
+  { id: "net1000_cdntv", name: "1000 Mega + CDN TV + Deezer", price: 149.9, description: "CDN TV e Deezer inclusos", iconType: "globe" },
+  { id: "net1000_rastreador", name: "1000 Mega + Rastreador", price: 159.9, description: "Rastreador veicular incluso", iconType: "globe" },
+  { id: "net1000_watchtv", name: "1000 Mega + Watch TV", price: 159.9, description: "Watch TV incluso", iconType: "globe" },
+  { id: "net1000_15gb", name: "1000 Mega + 15GB Movel", price: 179.9, description: "15GB internet movel", iconType: "globe" },
+  { id: "net1000_25gb", name: "1000 Mega + 25GB Movel", price: 189.9, description: "25GB internet movel", iconType: "globe" },
 ]
 
 const mobileOptions: ComboOption[] = [
@@ -143,11 +148,9 @@ export default function ComboBuilder({ preSelectedPlan }: ComboBuilderProps) {
   useEffect(() => {
     if (preSelectedPlan) {
       const speedToId: { [key: string]: string } = {
-        "500": "net500",
-        "800": "net800",
-        "1000": "net1000",
-        "familia800": "familia800",
-        "gamer1000": "gamer1000",
+        "500": "net500_cdntv",
+        "800": "net800_cdntv",
+        "1000": "net1000_cdntv",
       }
       const mappedId = speedToId[preSelectedPlan]
       if (mappedId) {

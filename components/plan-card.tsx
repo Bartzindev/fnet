@@ -92,9 +92,9 @@ export default function PlanCard({
                 {benefitIcons.map((icon, idx) => (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-9 h-9 md:w-10 md:h-10 relative rounded-lg overflow-hidden shadow-lg border border-white/10"
+                    className="flex-shrink-0 w-9 h-9 md:w-10 md:h-10 relative rounded-lg overflow-hidden shadow-lg border border-white/10 bg-white/10"
                   >
-                    <Image src={icon.src} alt={icon.alt} fill className="object-contain" />
+                    <Image src={icon.src} alt={icon.alt} fill className="object-contain p-0.5" />
                   </div>
                 ))}
               </div>
