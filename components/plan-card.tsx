@@ -5,6 +5,7 @@ import Image from "next/image"
 interface BenefitIcon {
   src: string
   alt: string
+  bg?: string // tailwind bg class, adapts to each logo's brand color
 }
 
 interface PlanCardProps {
@@ -91,19 +92,22 @@ export default function PlanCard({
 
         {/* Benefit Icons */}
         {benefitIcons && benefitIcons.length > 0 && (
-          <div className="mb-3">
-            <p className="text-[8px] uppercase tracking-widest font-semibold text-white/50 text-center mb-2">
-              Inclusos
+          <div className="mb-4">
+            <p className="text-[9px] uppercase tracking-[0.15em] font-bold text-white/60 text-center mb-3">
+              Inclusos no plano
             </p>
-            <div className="flex items-center justify-center gap-3 flex-nowrap">
+            <div className="flex items-start justify-center gap-4 flex-wrap">
               {benefitIcons.map((icon, idx) => (
-                <div key={idx} className="flex flex-col items-center gap-1">
+                <div key={idx} className="flex flex-col items-center gap-1.5">
                   <div
-                    className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 relative rounded-xl overflow-hidden shadow-lg shadow-black/20 border border-white/15 bg-white"
+                    className={`flex-shrink-0 w-[52px] h-[52px] md:w-[60px] md:h-[60px] relative rounded-2xl overflow-hidden ${icon.bg || "bg-white"}`}
+                    style={{
+                      boxShadow: "0 4px 14px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    }}
                   >
-                    <Image src={icon.src} alt={icon.alt} fill className="object-contain p-1.5" />
+                    <Image src={icon.src} alt={icon.alt} fill className="object-contain p-2" />
                   </div>
-                  <span className="text-[9px] text-white/70 font-medium leading-tight text-center max-w-[56px] truncate">
+                  <span className="text-[10px] text-white font-semibold leading-tight text-center max-w-[64px]">
                     {icon.alt}
                   </span>
                 </div>
@@ -114,24 +118,24 @@ export default function PlanCard({
 
         {/* Standard Features */}
         <div className="mb-2">
-          <p className="text-[9px] uppercase tracking-widest font-semibold text-white/40 mb-2">
-            Incluso no plano
-          </p>
-          <ul className="space-y-2">
+          <ul className="space-y-2.5">
             {features.map((feature, idx) => (
-              <li key={idx} className="flex items-center gap-2">
-                <div className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-[#E42525] flex items-center justify-center shadow-sm">
+              <li key={idx} className="flex items-center gap-2.5">
+                <div
+                  className="flex-shrink-0 w-5 h-5 rounded-full bg-[#E42525] flex items-center justify-center"
+                  style={{ boxShadow: "0 2px 6px rgba(228,37,37,0.4)" }}
+                >
                   <svg
-                    className="w-2.5 h-2.5 text-white"
+                    className="w-3 h-3 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    strokeWidth={3}
+                    strokeWidth={3.5}
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span className="text-white text-xs font-medium">{feature}</span>
+                <span className="text-white text-[13px] font-medium leading-snug">{feature}</span>
               </li>
             ))}
           </ul>
@@ -139,26 +143,32 @@ export default function PlanCard({
 
         {/* Extra Features (separated by divider) */}
         {extraFeatures && extraFeatures.length > 0 && (
-          <div className="mt-1">
-            <div className="border-t border-white/10 mb-2" />
-            <p className="text-[9px] uppercase tracking-widest font-semibold text-[#ff6b6b] mb-2">
-              Beneficios adicionais
+          <div className="mt-2">
+            <div className="border-t border-white/15 mb-3" />
+            <p
+              className="text-[9px] uppercase tracking-[0.15em] font-bold text-[#ff8a8a] mb-2.5"
+              style={{ fontFamily: "Nohemi" }}
+            >
+              Extras inclusos
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {extraFeatures.map((feature, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <div className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-[#E42525] flex items-center justify-center shadow-sm">
+                <li key={idx} className="flex items-center gap-2.5">
+                  <div
+                    className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-[#ff4d4d] to-[#E42525] flex items-center justify-center"
+                    style={{ boxShadow: "0 2px 8px rgba(228,37,37,0.5)" }}
+                  >
                     <svg
-                      className="w-2.5 h-2.5 text-white"
+                      className="w-3 h-3 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
-                      strokeWidth={3}
+                      strokeWidth={3.5}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                     </svg>
                   </div>
-                  <span className="text-white text-xs font-semibold">{feature}</span>
+                  <span className="text-white text-[13px] font-bold leading-snug">{feature}</span>
                 </li>
               ))}
             </ul>

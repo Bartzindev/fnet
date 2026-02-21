@@ -15,8 +15,8 @@ const featuredPlans = [
     features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
     extraFeatures: ["CDN TV", "Deezer"],
     benefitIcons: [
-      { src: "/images/cdntv.png", alt: "CDN TV" },
-      { src: "/images/deezer.png", alt: "Deezer" },
+      { src: "/images/cdntv.png", alt: "CDN TV", bg: "bg-[#0a1628]" },
+      { src: "/images/deezer.png", alt: "Deezer", bg: "bg-[#1c1033]" },
     ],
     comboDescription: "Plano Familia 800 Mega - R$ 129,90/mes | Incluso: CDN TV, Deezer",
   },
@@ -48,8 +48,8 @@ const otherPlans: Record<string, Array<{
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["CDN TV", "Deezer"],
       benefitIcons: [
-        { src: "/images/cdntv.png", alt: "CDN TV" },
-        { src: "/images/deezer.png", alt: "Deezer" },
+        { src: "/images/cdntv.png", alt: "CDN TV", bg: "bg-[#0a1628]" },
+        { src: "/images/deezer.png", alt: "Deezer", bg: "bg-[#1c1033]" },
       ],
       comboDescription: "500 Mega - R$ 99,90/mes | Incluso: CDN TV, Deezer",
     },
@@ -61,7 +61,7 @@ const otherPlans: Record<string, Array<{
       label: "800 Mega + Rastreador",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["Rastreador veicular"],
-      benefitIcons: [{ src: "/images/rastreador.png", alt: "Rastreador" }],
+      benefitIcons: [{ src: "/images/rastreador.png", alt: "Rastreador", bg: "bg-[#e8edf2]" }],
       comboDescription: "800 Mega + Rastreador Veicular - R$ 149,90/mes",
     },
     {
@@ -70,7 +70,7 @@ const otherPlans: Record<string, Array<{
       label: "800 Mega + Watch TV",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["Watch TV"],
-      benefitIcons: [{ src: "/images/watch-tv.png", alt: "Watch TV" }],
+      benefitIcons: [{ src: "/images/watch-tv.png", alt: "Watch TV", bg: "bg-[#f05a1e]" }],
       comboDescription: "800 Mega + Watch TV - R$ 149,90/mes",
     },
     {
@@ -89,7 +89,7 @@ const otherPlans: Record<string, Array<{
       label: "1000 Mega + Rastreador",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["Rastreador veicular"],
-      benefitIcons: [{ src: "/images/rastreador.png", alt: "Rastreador" }],
+      benefitIcons: [{ src: "/images/rastreador.png", alt: "Rastreador", bg: "bg-[#e8edf2]" }],
       comboDescription: "1000 Mega + Rastreador Veicular - R$ 159,90/mes",
     },
     {
@@ -98,7 +98,7 @@ const otherPlans: Record<string, Array<{
       label: "1000 Mega + Watch TV",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["Watch TV"],
-      benefitIcons: [{ src: "/images/watch-tv.png", alt: "Watch TV" }],
+      benefitIcons: [{ src: "/images/watch-tv.png", alt: "Watch TV", bg: "bg-[#f05a1e]" }],
       comboDescription: "1000 Mega + Watch TV - R$ 159,90/mes",
     },
     {
