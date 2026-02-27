@@ -17,8 +17,8 @@ interface ComboBuilderProps {
 
 const internetOptions: ComboOption[] = [
   { id: "none_internet", name: "Nao quero adicionar", price: 0, description: "Pular esta opcao", iconType: "globe" },
-  { id: "familia800", name: "Plano Familia 800 Mega", price: 129.9, description: "CDN TV e Deezer inclusos", iconType: "globe" },
-  { id: "gamer1000", name: "Plano Gamer 1000 Mega", price: 149.9, description: "Prioridade de rota, baixa latencia", iconType: "globe" },
+  { id: "familia800", name: "Plano Familia 800 Mega", price: 139.9, description: "Disney+ e HBO Max inclusos", iconType: "globe" },
+  { id: "gamer1000", name: "Plano Gamer 1000 Mega", price: 149.9, description: "ExitLag e Kaspersky inclusos", iconType: "globe" },
   { id: "net500_cdntv", name: "500 Mega + CDN TV + Deezer", price: 99.9, description: "CDN TV e Deezer inclusos", iconType: "globe" },
   { id: "net800_rastreador", name: "800 Mega + Rastreador", price: 149.9, description: "Rastreador veicular incluso", iconType: "globe" },
   { id: "net800_watchtv", name: "800 Mega + Watch TV", price: 149.9, description: "Watch TV incluso", iconType: "globe" },
