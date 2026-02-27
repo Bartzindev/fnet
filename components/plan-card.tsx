@@ -100,12 +100,12 @@ export default function PlanCard({
               {benefitIcons.map((icon, idx) => (
                 <div key={idx} className="flex flex-col items-center gap-1.5">
                   <div
-                    className={`flex-shrink-0 w-[52px] h-[52px] md:w-[60px] md:h-[60px] relative rounded-2xl overflow-hidden ${icon.bg || "bg-white"}`}
+                    className={`flex-shrink-0 w-[52px] h-[52px] md:w-[60px] md:h-[60px] relative rounded-2xl overflow-hidden ${icon.bg || ""}`}
                     style={{
                       boxShadow: "0 4px 14px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
                     }}
                   >
-                    <Image src={icon.src} alt={icon.alt} fill className="object-contain p-2" />
+                    <Image src={icon.src} alt={icon.alt} fill className="object-cover" />
                   </div>
                   <span className="text-[10px] text-white font-semibold leading-tight text-center max-w-[64px]">
                     {icon.alt}
