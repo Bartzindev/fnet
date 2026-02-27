@@ -10,7 +10,7 @@ import SubscriptionModal from "./subscription-modal"
 const featuredPlans = [
   {
     speed: "800",
-    price: "129,90",
+    price: "139,90",
     label: "Plano Familia",
     features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
     extraFeatures: ["CDN TV", "Deezer"],
@@ -18,7 +18,7 @@ const featuredPlans = [
       { src: "/images/cdntv.png", alt: "CDN TV", bg: "bg-[#0a1628]" },
       { src: "/images/deezer.png", alt: "Deezer", bg: "bg-black" },
     ],
-    comboDescription: "Plano Familia 800 Mega - R$ 129,90/mes | Incluso: CDN TV, Deezer",
+    comboDescription: "Plano Familia 800 Mega - R$ 139,90/mes | Incluso: CDN TV, Deezer",
   },
   {
     speed: "1000",
