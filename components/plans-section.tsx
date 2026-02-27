@@ -25,8 +25,12 @@ const featuredPlans = [
     price: "149,90",
     label: "Plano Gamer",
     features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
-    extraFeatures: ["Prioridade de rota", "Baixa latencia", "Estabilidade para jogos"],
-    comboDescription: "Plano Gamer 1000 Mega - R$ 149,90/mes | Incluso: Prioridade de rota, Baixa latencia, Estabilidade para jogos",
+    extraFeatures: ["ExitLag", "Kaspersky"],
+    benefitIcons: [
+      { src: "/images/exitlag-new.png", alt: "ExitLag" },
+      { src: "/images/kaspersky-new.jpg", alt: "Kaspersky" },
+    ],
+    comboDescription: "Plano Gamer 1000 Mega - R$ 149,90/mes | Incluso: ExitLag, Kaspersky",
   },
 ]
 
