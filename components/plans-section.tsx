@@ -176,7 +176,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
       <section id="planos" className="py-8 md:py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6 md:mb-10">
-            <h2 className="text-2xl md:text-5xl font-bold text-[#000347] mb-2 px-1" style={{ fontFamily: "Nohemi" }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#000347] mb-2 px-1" style={{ fontFamily: "Nohemi" }}>
               {activeTab === "internet" ? "Planos de Internet Fibra" : "Planos de Chip 5G"}
             </h2>
             <p className="text-gray-600 text-sm md:text-base max-w-xl md:max-w-2xl mx-auto leading-snug px-4 font-normal">
