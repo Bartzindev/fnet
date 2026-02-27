@@ -145,7 +145,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
   const [showModal, setShowModal] = useState(false)
   const [selectedPlanDetails, setSelectedPlanDetails] = useState("")
   const [openAccordion, setOpenAccordion] = useState<string | null>(null)
-  const [activeSpeedTab, setActiveSpeedTab] = useState<string>("500")
+  const [activeSpeedTab, setActiveSpeedTab] = useState<string>("800")
 
   useEffect(() => {
     const handleSwitchTab = (event: CustomEvent<{ tab: "internet" | "mobile" }>) => {
