@@ -25,12 +25,13 @@ const featuredPlans = [
     price: "149,90",
     label: "Plano Gamer",
     features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
-    extraFeatures: ["ExitLag", "Kaspersky"],
+    extraFeatures: ["ExitLag", "Kaspersky", "Deezer"],
     benefitIcons: [
       { src: "/images/exitlag-new.png", alt: "ExitLag" },
       { src: "/images/kaspersky-new.jpg", alt: "Kaspersky" },
+      { src: "/images/deezer.png", alt: "Deezer", bg: "bg-black" },
     ],
-    comboDescription: "Plano Gamer 1000 Mega - R$ 149,90/mes | Incluso: ExitLag, Kaspersky",
+    comboDescription: "Plano Gamer 1000 Mega - R$ 149,90/mes | Incluso: ExitLag, Kaspersky, Deezer",
   },
 ]
 
