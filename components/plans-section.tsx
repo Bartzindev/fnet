@@ -138,6 +138,7 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
   const [showModal, setShowModal] = useState(false)
   const [selectedPlanDetails, setSelectedPlanDetails] = useState("")
   const [openAccordion, setOpenAccordion] = useState<string | null>(null)
+  const [activeSpeedTab, setActiveSpeedTab] = useState<string>("500")
 
   useEffect(() => {
     const handleSwitchTab = (event: CustomEvent<{ tab: "internet" | "mobile" }>) => {
@@ -228,20 +229,54 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                 <div className="w-16 h-1 bg-[#E42525] mx-auto mt-2 rounded-full" />
               </div>
 
-              {/* Desktop: grid 4 columns */}
-              <div className="hidden md:grid md:grid-cols-4 gap-4 max-w-[960px] mx-auto">
-                {allOtherPlans.map((plan, idx) => (
-                  <PlanCard
-                    key={idx}
-                    speed={plan.speed}
-                    price={plan.price}
-                    features={plan.features}
-                    extraFeatures={plan.extraFeatures}
-                    label={plan.label}
-                    benefitIcons={plan.benefitIcons}
-                    onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
-                  />
-                ))}
+              {/* Desktop: speed tabs + grid */}
+              <div className="hidden md:block">
+                {/* Speed tabs */}
+                <div className="flex justify-center gap-2 mb-6">
+                  {speedGroups.map((speed) => {
+                    const plans = otherPlans[speed]
+                    if (!plans || plans.length === 0) return null
+                    const isActive = activeSpeedTab === speed
+
+                    return (
+                      <button
+                        key={speed}
+                        onClick={() => setActiveSpeedTab(speed)}
+                        className={`px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                          isActive
+                            ? "bg-gradient-to-r from-[#000347] to-[#001366] text-white shadow-lg"
+                            : "bg-gray-100 text-[#000347] hover:bg-gray-200"
+                        }`}
+                        style={{ fontFamily: "Nohemi" }}
+                      >
+                        {speed} Mega
+                        <span className={`ml-2 text-xs ${isActive ? "text-white/60" : "text-gray-500"}`}>
+                          ({plans.length})
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+
+                {/* Plans grid for active tab */}
+                <div className={`grid gap-4 max-w-[960px] mx-auto ${
+                  (otherPlans[activeSpeedTab]?.length || 0) === 1 ? "grid-cols-1 max-w-[280px]" :
+                  (otherPlans[activeSpeedTab]?.length || 0) <= 3 ? "grid-cols-3 max-w-[720px]" :
+                  "grid-cols-4"
+                }`}>
+                  {(otherPlans[activeSpeedTab] || []).map((plan, idx) => (
+                    <PlanCard
+                      key={`${activeSpeedTab}-${idx}`}
+                      speed={plan.speed}
+                      price={plan.price}
+                      features={plan.features}
+                      extraFeatures={plan.extraFeatures}
+                      label={plan.label}
+                      benefitIcons={plan.benefitIcons}
+                      onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Mobile: accordion by speed */}
