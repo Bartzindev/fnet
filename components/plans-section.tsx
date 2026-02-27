@@ -13,12 +13,12 @@ const featuredPlans = [
     price: "139,90",
     label: "Plano Familia",
     features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
-    extraFeatures: ["CDN TV", "Deezer"],
+    extraFeatures: ["Disney+", "HBO Max"],
     benefitIcons: [
-      { src: "/images/cdntv.png", alt: "CDN TV", bg: "bg-[#0a1628]" },
-      { src: "/images/deezer.png", alt: "Deezer", bg: "bg-black" },
+      { src: "/images/disney-plus-new.png", alt: "Disney+" },
+      { src: "/images/hbo-max-new.png", alt: "HBO Max" },
     ],
-    comboDescription: "Plano Familia 800 Mega - R$ 139,90/mes | Incluso: CDN TV, Deezer",
+    comboDescription: "Plano Familia 800 Mega - R$ 139,90/mes | Incluso: Disney+, HBO Max",
   },
   {
     speed: "1000",
