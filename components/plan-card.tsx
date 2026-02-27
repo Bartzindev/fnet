@@ -51,16 +51,6 @@ export default function PlanCard({
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      {/* Chip icon */}
-      <div className="absolute top-3 right-3 w-8 h-8 md:w-9 md:h-9 opacity-60">
-        <Image
-          src="/images/chip-rfid.png"
-          alt="Chip"
-          fill
-          className="object-contain invert"
-        />
-      </div>
-
       {/* Top content */}
       <div className="relative z-10 flex flex-col flex-1">
         {/* Label badge */}
