@@ -141,39 +141,7 @@ export default function PlanCard({
           </ul>
         </div>
 
-        {/* Extra Features (separated by divider) */}
-        {extraFeatures && extraFeatures.length > 0 && (
-          <div className="mt-2">
-            <div className="border-t border-white/15 mb-3" />
-            <p
-              className="text-[9px] uppercase tracking-[0.15em] font-bold text-[#ff8a8a] mb-2.5"
-              style={{ fontFamily: "Nohemi" }}
-            >
-              Extras inclusos
-            </p>
-            <ul className="space-y-2.5">
-              {extraFeatures.map((feature, idx) => (
-                <li key={idx} className="flex items-center gap-2.5">
-                  <div
-                    className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-[#ff4d4d] to-[#E42525] flex items-center justify-center"
-                    style={{ boxShadow: "0 2px 8px rgba(228,37,37,0.5)" }}
-                  >
-                    <svg
-                      className="w-3 h-3 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      strokeWidth={3.5}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
-                  </div>
-                  <span className="text-white text-[13px] font-bold leading-snug">{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+
       </div>
 
       {/* Button pinned to bottom */}
