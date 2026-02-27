@@ -83,6 +83,7 @@ const otherPlans: Record<string, Array<{
       label: "800 Mega + 10GB Movel",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["10GB internet movel"],
+      benefitIcons: [{ src: "/images/chip-rfid.png", alt: "Chip Movel", bg: "bg-white" }],
       comboDescription: "800 Mega + 10GB Movel - R$ 159,90/mes",
     },
   ],
@@ -111,6 +112,7 @@ const otherPlans: Record<string, Array<{
       label: "1000 Mega + 15GB Movel",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["15GB internet movel"],
+      benefitIcons: [{ src: "/images/chip-rfid.png", alt: "Chip Movel", bg: "bg-white" }],
       comboDescription: "1000 Mega + 15GB Movel - R$ 179,90/mes",
     },
     {
@@ -119,6 +121,7 @@ const otherPlans: Record<string, Array<{
       label: "1000 Mega + 25GB Movel",
       features: ["Wi-Fi Premium incluso", "Instalacao gratuita", "Suporte tecnico prioritario"],
       extraFeatures: ["25GB internet movel"],
+      benefitIcons: [{ src: "/images/chip-rfid.png", alt: "Chip Movel", bg: "bg-white" }],
       comboDescription: "1000 Mega + 25GB Movel - R$ 189,90/mes",
     },
   ],
