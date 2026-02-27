@@ -23,7 +23,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="hidden md:block relative w-full h-[250px]">
+      <div className="hidden md:block relative w-full h-[380px]">
         <Image
           src="/images/banner-melhor-desktop.jpg"
           alt="Planos com até 1000 Mbps - Fernando Net com benefícios inclusos"
