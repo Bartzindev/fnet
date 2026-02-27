@@ -259,22 +259,19 @@ export default function PlansSection({ onPlanSelect }: PlansSectionProps = {}) {
                 </div>
 
                 {/* Plans grid for active tab */}
-                <div className={`grid gap-4 max-w-[960px] mx-auto ${
-                  (otherPlans[activeSpeedTab]?.length || 0) === 1 ? "grid-cols-1 max-w-[280px]" :
-                  (otherPlans[activeSpeedTab]?.length || 0) <= 3 ? "grid-cols-3 max-w-[720px]" :
-                  "grid-cols-4"
-                }`}>
+                <div className="flex flex-wrap justify-center gap-4 max-w-[960px] mx-auto">
                   {(otherPlans[activeSpeedTab] || []).map((plan, idx) => (
-                    <PlanCard
-                      key={`${activeSpeedTab}-${idx}`}
-                      speed={plan.speed}
-                      price={plan.price}
-                      features={plan.features}
-                      extraFeatures={plan.extraFeatures}
-                      label={plan.label}
-                      benefitIcons={plan.benefitIcons}
-                      onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
-                    />
+                    <div key={`${activeSpeedTab}-${idx}`} className="w-[220px]">
+                      <PlanCard
+                        speed={plan.speed}
+                        price={plan.price}
+                        features={plan.features}
+                        extraFeatures={plan.extraFeatures}
+                        label={plan.label}
+                        benefitIcons={plan.benefitIcons}
+                        onSubscribe={() => handlePlanSubscribe(plan.speed, "internet", plan.price, plan.comboDescription)}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
