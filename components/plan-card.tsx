@@ -105,7 +105,12 @@ export default function PlanCard({
                       boxShadow: "0 4px 14px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
                     }}
                   >
-                    <Image src={icon.src} alt={icon.alt} fill className="object-cover" />
+                    <Image 
+                      src={icon.src} 
+                      alt={icon.alt} 
+                      fill 
+                      className={icon.bg ? "object-contain p-1.5" : "object-cover"} 
+                    />
                   </div>
                   <span className="text-[10px] text-white font-semibold leading-tight text-center max-w-[64px]">
                     {icon.alt}
